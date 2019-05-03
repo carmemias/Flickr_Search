@@ -2,16 +2,19 @@
   <div id="app">
 		<h1>Flickr Search</h1>
 		<SearchForm/>
+		<SearchResults />
   </div>
 </template>
 
 <script>
 import SearchForm from './components/SearchForm.vue'
+import SearchResults from './components/SearchResults.vue'
 
 export default {
   name: 'app',
   components: {
-		SearchForm
+		SearchForm,
+		SearchResults
   }
 }
 </script>
