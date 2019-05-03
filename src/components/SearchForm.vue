@@ -1,7 +1,7 @@
 <template lang="html">
   <form id="search-form" v-on:submit="search">
 		<label for="term-field">What photos would you like to see?</label>
-		<input id="term-field" type="text" v-model="searchTerm" />
+		<input id="term-field" type="text" v-model="searchTerm" v-on:focus="clearPrevious" />
 		<button type="submit">Search</button>
 	</form>
 </template>
@@ -36,6 +36,16 @@ export default {
 			// https://api.flickr.com/services/rest/?method={method}&api_key={api_key}&text={text_to_search}&media={media_type}&extras={comma_separated_codes_for_extras}&format={response_format}
 			const url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=fd1eff819bf82540142ac1ba867ee7e9&text=' + this.searchTerm + '&media=photos&extras=owner_name&format=json&nojsoncallback=1'
 			return url
+		},
+		clearPrevious(event){
+			event.target.value = ''
+			this.$store.dispatch('clear_search_term')
+			this.$store.dispatch('clear_results_status')
+			this.$store.dispatch('clear_results_count')
+			this.$store.dispatch('clear_current_page')
+			this.$store.dispatch('clear_page_count')
+			this.$store.dispatch('clear_fetched_photos')
+			this.$store.dispatch('clear_message')
 		}
 	}
 }
