@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 		searchTerm: '',
-		searchResults: []
+		searchResults: null
   },
   mutations: {
 		SET_SEARCH_TERM(state, newTerm){
@@ -28,8 +28,20 @@ export default new Vuex.Store({
 		getSearchTerm: (state) => {
 			return state.searchTerm
 		},
-		getSearchResults: (state) => {
-			return state.searchResults
+		getResultStatus: (state) => {
+			return state.searchResults ? state.searchResults.stat : ''
+		},
+		getPhotos: (state) => {
+			return state.searchResults ? state.searchResults.photos.photo : []
+		},
+		getResultsCount: (state) => {
+			return state.searchResults ? state.searchResults.photos.total : null
+		},
+		getCurrentPage: (state) => {
+			return state.searchResults ? state.searchResults.photos.page : null
+		},
+		getTotalPages: (state) => {
+			return state.searchResults ? state.searchResults.photos.pages : null
 		}
 	}
 })

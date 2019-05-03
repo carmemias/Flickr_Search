@@ -1,4 +1,8 @@
-# formedix-flickr-search
+# Flickr Search
+
+Mini app using Flickr API to search photos. Results displayed using the Infinity Scroll effect.
+
+App built using Vue.js with Vuex to centralise the state store and and Axios for API data fetching.
 
 ## Project setup
 ```

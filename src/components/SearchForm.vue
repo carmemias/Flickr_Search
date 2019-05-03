@@ -17,7 +17,21 @@ export default {
 	methods: {
 		search(event){
 			event.preventDefault()
+			//save term to state store
 			this.$store.dispatch('set_search_term', this.searchTerm)
+
+			//fetch data from API
+			const fetchUrl = this.buildUrl()
+			this.axios.get(fetchUrl)
+			.then(res => {
+				//save results to store
+				this.$store.dispatch('set_search_results', res.data)
+			})
+		},
+		buildUrl(){
+			// https://api.flickr.com/services/rest/?method={method}&api_key={api_key}&text={text_to_search}&media={media_type}&extras={comma_separated_codes_for_extras}&format={response_format}
+			const url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=fd1eff819bf82540142ac1ba867ee7e9&text=' + this.searchTerm + '&media=photos&extras=owner_name&format=json&nojsoncallback=1'
+			return url
 		}
 	}
 }
