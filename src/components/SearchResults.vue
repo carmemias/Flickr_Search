@@ -7,19 +7,23 @@
 			<p>Currently showing page {{ currentPage }} of {{ totalPages }} pages.</p>
 		</div>
 
+		<PhotoGrid />
+
 	</section>
 
 </template>
 
 <script>
+import PhotoGrid from './PhotoGrid.vue'
+
 export default {
 	name: "search-results",
+	components: {
+		PhotoGrid
+	},
 	computed:{
 		searchTerm(){
 			return this.$store.getters.getSearchTerm
-		},
-		photos(){
-			return this.$store.getters.getPhotos
 		},
 		totalResults(){
 			return this.$store.getters.getResultsCount
