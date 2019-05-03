@@ -4,7 +4,7 @@
 
 <script>
 export default {
-	name: "sinngle-photo",
+	name: "single-photo",
 	props: ['photo'],
 	methods: {
 		srcUrl(){
@@ -19,4 +19,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+	img {
+		margin: 3px;
+	}
 </style>

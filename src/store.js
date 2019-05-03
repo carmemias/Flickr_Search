@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 		searchTerm: '',
-		searchResults: null
+		searchResults: null,
+		message: ''
   },
   mutations: {
 		SET_SEARCH_TERM(state, newTerm){
@@ -14,6 +15,12 @@ export default new Vuex.Store({
 		},
 		SET_SEARCH_RESULTS(state, newResults){
 			state.searchResults = newResults
+		},
+		SET_MESSAGE(state, newMessage){
+			state.message = newMessage
+		},
+		CLEAR_MESSAGE(state){
+			state.message = ''
 		}
   },
   actions: {
@@ -22,6 +29,12 @@ export default new Vuex.Store({
 		},
 		set_search_results({commit}, newResults){
 			commit('SET_SEARCH_RESULTS', newResults)
+		},
+		set_message({commit}, newMessage){
+			commit('SET_MESSAGE', newMessage)
+		},
+		clear_message({commit}){
+			commit('CLEAR_MESSAGE')
 		}
   },
 	getters: {
@@ -42,6 +55,9 @@ export default new Vuex.Store({
 		},
 		getTotalPages: (state) => {
 			return state.searchResults ? state.searchResults.photos.pages : null
+		},
+		getMessage: (state) => {
+			return state.message
 		}
 	}
 })

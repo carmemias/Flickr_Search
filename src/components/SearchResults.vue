@@ -4,7 +4,7 @@
 
 		<div id="results-meta">
 			<p>Found {{ totalResults }} photos.</p>
-			<p>Currently showing page {{ currentPage }} of {{ totalPages }} pages.</p>
+			<p>Currently showing page {{ currentPage }} of {{ totalPages }} total pages.</p>
 		</div>
 
 		<PhotoGrid />

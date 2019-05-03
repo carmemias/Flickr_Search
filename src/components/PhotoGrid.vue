@@ -21,4 +21,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+	#photo-grid {
+		display: flex;
+		flex-wrap: wrap;
+		/* height: 60vh;
+		overflow-y: scroll; */
+	}
 </style>
