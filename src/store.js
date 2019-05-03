@@ -13,7 +13,8 @@ export default new Vuex.Store({
 			pagesTotalCount: null
 		},
 		fetchedPhotos: [],
-		message: ''
+		message: '',
+		showModal: ''
   },
   mutations: {
 		SET_SEARCH_TERM(state, newTerm){
@@ -57,6 +58,12 @@ export default new Vuex.Store({
 		},
 		CLEAR_MESSAGE(state){
 			state.message = ''
+		},
+		SET_SHOW_MODAL(state, photoId){
+			state.showModal = photoId;
+		},
+		CLEAR_SHOW_MODAL(state){
+			state.showModal = '';
 		}
   },
   actions: {
@@ -101,6 +108,12 @@ export default new Vuex.Store({
 		},
 		clear_message({commit}){
 			commit('CLEAR_MESSAGE')
+		},
+		set_show_modal({commit}, photoId){
+			commit('SET_SHOW_MODAL', photoId);
+		},
+		clear_show_modal({commit}){
+			commit('CLEAR_SHOW_MODAL');
 		}
   },
 	getters: {
@@ -124,6 +137,9 @@ export default new Vuex.Store({
 		},
 		getMessage: (state) => {
 			return state.message
+		},
+		getShowModal: (state) => {
+			return state.showModal
 		}
 	}
 })

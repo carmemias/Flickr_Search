@@ -46,6 +46,7 @@ export default {
 			this.$store.dispatch('clear_page_count')
 			this.$store.dispatch('clear_fetched_photos')
 			this.$store.dispatch('clear_message')
+			this.$store.dispatch('clear_show_modal')
 		}
 	}
 }
