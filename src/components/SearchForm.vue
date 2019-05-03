@@ -25,7 +25,11 @@ export default {
 			this.axios.get(fetchUrl)
 			.then(res => {
 				//save results to store
-				this.$store.dispatch('set_search_results', res.data)
+				this.$store.dispatch('add_fetched_photos', res.data.photos.photo)
+				this.$store.dispatch('set_current_page', res.data.photos.page)
+				this.$store.dispatch('set_page_count', res.data.photos.pages)
+				this.$store.dispatch('set_results_count', res.data.photos.total)
+				this.$store.dispatch('set_results_status', res.data.stat)
 			})
 		},
 		buildUrl(){

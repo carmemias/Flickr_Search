@@ -38,9 +38,24 @@ export default {
 			}
 		},
 		fetchNextPage(){
-			/* eslint-disable */
-			console.log("fetch next page");
-			/* eslint-enable */
+			//fetch data from API
+			const fetchUrl = this.buildUrl()
+			this.axios.get(fetchUrl)
+			.then(res => {
+				//add results to store
+				this.$store.dispatch('add_fetched_photos', res.data.photos.photo)
+				this.$store.dispatch('set_results_status', res.data.stat)
+				this.$store.dispatch('set_current_page', res.data.photos.page)
+
+			})
+		},
+		buildUrl(){
+			const searchTerm = this.$store.getters.getSearchTerm
+			const pageToFetch = this.getCurrentPage() + 1
+
+			// https://api.flickr.com/services/rest/?method={method}&api_key={api_key}&text={text_to_search}&page={page_number}media={media_type}&extras={comma_separated_codes_for_extras}&format={response_format}
+			const url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=fd1eff819bf82540142ac1ba867ee7e9&text=' + searchTerm + '&page=' + pageToFetch + '&media=photos&extras=owner_name&format=json&nojsoncallback=1'
+			return url
 		},
 		getCurrentPage(){
 			return this.$store.getters.getCurrentPage
